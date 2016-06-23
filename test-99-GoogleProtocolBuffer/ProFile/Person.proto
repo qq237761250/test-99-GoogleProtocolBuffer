@@ -1,0 +1,10 @@
+syntax = "proto2";
+
+message Person {
+optional string name = 1;                         // 个人名称
+repeated Eye eye = 2;                             //眼睛属性
+}
+
+message Eye {
+optional string color = 1;                         // 眼睛颜色
+}
