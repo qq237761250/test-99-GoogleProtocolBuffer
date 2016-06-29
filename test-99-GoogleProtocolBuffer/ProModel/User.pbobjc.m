@@ -46,6 +46,7 @@ static GPBFileDescriptor *UserRoot_FileDescriptor(void) {
 @dynamic hasUserId, userId;
 @dynamic hasNick, nick;
 @dynamic hasAvatar, avatar;
+@dynamic hasBalance, balance;
 @dynamic hasPassword, password;
 @dynamic hasEmail, email;
 @dynamic hasMobile, mobile;
@@ -55,6 +56,7 @@ static GPBFileDescriptor *UserRoot_FileDescriptor(void) {
 
 typedef struct User__storage_ {
   uint32_t _has_storage_[1];
+  float balance;
   NSString *userId;
   NSString *nick;
   NSString *avatar;
@@ -100,10 +102,19 @@ typedef struct User__storage_ {
         .dataType = GPBDataTypeString,
       },
       {
+        .name = "balance",
+        .dataTypeSpecific.className = NULL,
+        .number = User_FieldNumber_Balance,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(User__storage_, balance),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeFloat,
+      },
+      {
         .name = "password",
         .dataTypeSpecific.className = NULL,
         .number = User_FieldNumber_Password,
-        .hasIndex = 3,
+        .hasIndex = 4,
         .offset = (uint32_t)offsetof(User__storage_, password),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
@@ -112,7 +123,7 @@ typedef struct User__storage_ {
         .name = "email",
         .dataTypeSpecific.className = NULL,
         .number = User_FieldNumber_Email,
-        .hasIndex = 4,
+        .hasIndex = 5,
         .offset = (uint32_t)offsetof(User__storage_, email),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
@@ -121,7 +132,7 @@ typedef struct User__storage_ {
         .name = "mobile",
         .dataTypeSpecific.className = NULL,
         .number = User_FieldNumber_Mobile,
-        .hasIndex = 5,
+        .hasIndex = 6,
         .offset = (uint32_t)offsetof(User__storage_, mobile),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
@@ -130,7 +141,7 @@ typedef struct User__storage_ {
         .name = "qqOpenId",
         .dataTypeSpecific.className = NULL,
         .number = User_FieldNumber_QqOpenId,
-        .hasIndex = 6,
+        .hasIndex = 7,
         .offset = (uint32_t)offsetof(User__storage_, qqOpenId),
         .flags = GPBFieldOptional | GPBFieldTextFormatNameCustom,
         .dataType = GPBDataTypeString,
@@ -139,7 +150,7 @@ typedef struct User__storage_ {
         .name = "sinaId",
         .dataTypeSpecific.className = NULL,
         .number = User_FieldNumber_SinaId,
-        .hasIndex = 7,
+        .hasIndex = 8,
         .offset = (uint32_t)offsetof(User__storage_, sinaId),
         .flags = GPBFieldOptional | GPBFieldTextFormatNameCustom,
         .dataType = GPBDataTypeString,
@@ -148,7 +159,7 @@ typedef struct User__storage_ {
         .name = "weixinId",
         .dataTypeSpecific.className = NULL,
         .number = User_FieldNumber_WeixinId,
-        .hasIndex = 8,
+        .hasIndex = 9,
         .offset = (uint32_t)offsetof(User__storage_, weixinId),
         .flags = GPBFieldOptional | GPBFieldTextFormatNameCustom,
         .dataType = GPBDataTypeString,

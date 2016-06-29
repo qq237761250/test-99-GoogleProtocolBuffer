@@ -44,12 +44,14 @@ static GPBFileDescriptor *PersonRoot_FileDescriptor(void) {
 @implementation Person
 
 @dynamic hasName, name;
-@dynamic eyeArray, eyeArray_Count;
+@dynamic hasFoot, foot;
+@dynamic eyesArray, eyesArray_Count;
 
 typedef struct Person__storage_ {
   uint32_t _has_storage_[1];
   NSString *name;
-  NSMutableArray *eyeArray;
+  Foot *foot;
+  NSMutableArray *eyesArray;
 } Person__storage_;
 
 // This method is threadsafe because it is initially called
@@ -68,11 +70,20 @@ typedef struct Person__storage_ {
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "eyeArray",
+        .name = "foot",
+        .dataTypeSpecific.className = GPBStringifySymbol(Foot),
+        .number = Person_FieldNumber_Foot,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(Person__storage_, foot),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "eyesArray",
         .dataTypeSpecific.className = GPBStringifySymbol(Eye),
-        .number = Person_FieldNumber_EyeArray,
+        .number = Person_FieldNumber_EyesArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Person__storage_, eyeArray),
+        .offset = (uint32_t)offsetof(Person__storage_, eyesArray),
         .flags = GPBFieldRepeated,
         .dataType = GPBDataTypeMessage,
       },
@@ -127,6 +138,60 @@ typedef struct Eye__storage_ {
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(Eye__storage_)
+                                         flags:0];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - Foot
+
+@implementation Foot
+
+@dynamic hasWidth, width;
+@dynamic hasHeight, height;
+
+typedef struct Foot__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t width;
+  int32_t height;
+} Foot__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "width",
+        .dataTypeSpecific.className = NULL,
+        .number = Foot_FieldNumber_Width,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(Foot__storage_, width),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "height",
+        .dataTypeSpecific.className = NULL,
+        .number = Foot_FieldNumber_Height,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(Foot__storage_, height),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[Foot class]
+                                     rootClass:[PersonRoot class]
+                                          file:PersonRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(Foot__storage_)
                                          flags:0];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;

@@ -45,6 +45,7 @@ typedef GPB_ENUM(User_FieldNumber) {
   User_FieldNumber_UserId = 1,
   User_FieldNumber_Nick = 2,
   User_FieldNumber_Avatar = 3,
+  User_FieldNumber_Balance = 4,
   User_FieldNumber_Password = 7,
   User_FieldNumber_Email = 8,
   User_FieldNumber_Mobile = 9,
@@ -70,6 +71,10 @@ typedef GPB_ENUM(User_FieldNumber) {
 /// Test to see if @c avatar has been set.
 @property(nonatomic, readwrite) BOOL hasAvatar;
 
+///余额
+@property(nonatomic, readwrite) float balance;
+
+@property(nonatomic, readwrite) BOOL hasBalance;
 @property(nonatomic, readwrite, copy, null_resettable) NSString *password;
 /// Test to see if @c password has been set.
 @property(nonatomic, readwrite) BOOL hasPassword;

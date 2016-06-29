@@ -25,6 +25,7 @@
 CF_EXTERN_C_BEGIN
 
 @class Eye;
+@class Foot;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -45,7 +46,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef GPB_ENUM(Person_FieldNumber) {
   Person_FieldNumber_Name = 1,
-  Person_FieldNumber_EyeArray = 2,
+  Person_FieldNumber_Foot = 2,
+  Person_FieldNumber_EyesArray = 3,
 };
 
 @interface Person : GPBMessage
@@ -55,10 +57,15 @@ typedef GPB_ENUM(Person_FieldNumber) {
 /// Test to see if @c name has been set.
 @property(nonatomic, readwrite) BOOL hasName;
 
-///眼睛属性
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<Eye*> *eyeArray;
-/// The number of items in @c eyeArray without causing the array to be created.
-@property(nonatomic, readonly) NSUInteger eyeArray_Count;
+///大腿
+@property(nonatomic, readwrite, strong, null_resettable) Foot *foot;
+/// Test to see if @c foot has been set.
+@property(nonatomic, readwrite) BOOL hasFoot;
+
+///眼睛数组
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<Eye*> *eyesArray;
+/// The number of items in @c eyesArray without causing the array to be created.
+@property(nonatomic, readonly) NSUInteger eyesArray_Count;
 
 @end
 
@@ -75,6 +82,25 @@ typedef GPB_ENUM(Eye_FieldNumber) {
 /// Test to see if @c color has been set.
 @property(nonatomic, readwrite) BOOL hasColor;
 
+@end
+
+#pragma mark - Foot
+
+typedef GPB_ENUM(Foot_FieldNumber) {
+  Foot_FieldNumber_Width = 1,
+  Foot_FieldNumber_Height = 2,
+};
+
+@interface Foot : GPBMessage
+
+/// 大腿宽度
+@property(nonatomic, readwrite) int32_t width;
+
+@property(nonatomic, readwrite) BOOL hasWidth;
+/// 大腿高度
+@property(nonatomic, readwrite) int32_t height;
+
+@property(nonatomic, readwrite) BOOL hasHeight;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -6,6 +6,8 @@ required string userId = 1;                       // 用户ID
 optional string nick = 2;                         // 用户昵称
 optional string avatar = 3;                       // 用户头像
 
+optional float balance = 4;                       //余额
+
 optional string password = 7;
 optional string email = 8;
 optional string mobile = 9;                       // 手机号码
